@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "ast-fine-tuned"
+version = "0.1.0"
+description = ""
+authors = ["jacobgill37 <jacobgill37@hotmail.com>"]
+readme = "README.md"
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+torch = {version = "^2.4.1+cu121", source = "pytorch"}
+datasets = {version = "^3.0.2", extras = ["audio"]}
+transformers = {version = "^4.46.0", extras = ["torch"]}
+audiomentations = { version = "^0.37.0", python = ">=3.10,<=3.12" }
+evaluate = "^0.4.3"
+tensorboard = "^2.18.0"
+torch-tb-profiler = "^0.4.3"
+torch-directml = "^0.2.5.dev240914"
+
+
+[[tool.poetry.source]]
+name = "pytorch"
+url = "https://download.pytorch.org/whl/cu121"
+priority = "explicit"
+
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.29.5"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
