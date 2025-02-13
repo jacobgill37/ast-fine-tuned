@@ -163,3 +163,5 @@ cython_debug/
 
 audio_files/
 models/
+**/audio/*mp3
+dataset/

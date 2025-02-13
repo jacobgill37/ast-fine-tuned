@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Audio Classifier</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        margin-top: 20px;
+      }
+      audio {
+        margin: 20px 0;
+      }
+      .button-container {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+      }
+      button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      button:focus {
+        outline: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Audio Classifier</h1>
+    {% if no_files %}
+    <p>No more files to classify.</p>
+    {% else %}
+    <audio controls autoplay>
+      <source
+        src="{{ url_for('main.audio', filename=audio_file) }}"
+        type="audio/mpeg"
+      />
+      Your browser does not support the audio element.
+    </audio>
+    <div class="button-container">
+      <form
+        action="{{ url_for('main.classify', category='music', filename=audio_file) }}"
+        method="post"
+      >
+        <button type="submit">Music</button>
+      </form>
+      <form
+        action="{{ url_for('main.classify', category='advert', filename=audio_file) }}"
+        method="post"
+      >
+        <button type="submit">Advert</button>
+      </form>
+      <form
+        action="{{ url_for('main.classify', category='presenter', filename=audio_file) }}"
+        method="post"
+      >
+        <button type="submit">Presenter</button>
+      </form>
+    </div>
+    {% endif %}
+  </body>
+</html>
