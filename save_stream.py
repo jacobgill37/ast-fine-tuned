@@ -2,6 +2,7 @@ import io
 import time
 from pydub import AudioSegment
 from concurrent.futures import ThreadPoolExecutor
+import os
 
 import urllib.request
 
@@ -12,6 +13,11 @@ classic_fm_url = "https://ice-sov.musicradio.com/ClassicFMMP3"
 planetrock_path = "audio_files/planetrock/"
 kerrang_path = "audio_files/kerrang/"
 classic_fm_path = "audio_files/classic_fm/"
+
+# Create directories if they don't exist
+os.makedirs(planetrock_path, exist_ok=True)
+os.makedirs(kerrang_path, exist_ok=True)
+os.makedirs(classic_fm_path, exist_ok=True)
 
 
 def save_30_seconds_of_audio(stream_url):
@@ -35,10 +41,12 @@ def download_and_export_audio(url, path):
     print(f"Exported audio to {path}")
 
 
-ten_minutes_from_now = time.time() + 600
+time_to_listen_for = time.time() + 300
+
+print(f"Listening for {time_to_listen_for - time.time()} seconds...")
 
 with ThreadPoolExecutor() as executor:
-    while time.time() < ten_minutes_from_now:
+    while time.time() < time_to_listen_for:
         futures = [
             executor.submit(
                 download_and_export_audio,
