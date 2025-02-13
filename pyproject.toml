@@ -16,6 +16,7 @@ evaluate = "^0.4.3"
 tensorboard = "^2.18.0"
 torch-tb-profiler = "^0.4.3"
 torch-directml = "^0.2.5.dev240914"
+pydub = "^0.25.1"
 
 
 [[tool.poetry.source]]
