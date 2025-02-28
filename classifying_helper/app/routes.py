@@ -29,7 +29,9 @@ def classify(category, filename):
     global current_index
     # Define the source and destination paths
     src_path = os.path.join(bp.root_path, "static", "audio", filename)
-    dest_dir = os.path.join(bp.root_path, "..", "..", "dataset", "train", category)
+    dest_dir = os.path.join(
+        bp.root_path, "..", "..", "dataset_5_seconds", "train", category
+    )
     dest_path = os.path.join(dest_dir, filename)
 
     # Create the category directory if it doesn't exist

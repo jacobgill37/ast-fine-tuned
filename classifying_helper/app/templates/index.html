@@ -72,6 +72,18 @@
       >
         <button type="submit">Presenter</button>
       </form>
+      <form
+        action="{{ url_for('main.classify', category='other', filename=audio_file) }}"
+        method="post"
+      >
+        <button type="submit">Other</button>
+      </form>
+      <form
+        action="{{ url_for('main.classify', category='thirty_seconds', filename=audio_file) }}"
+        method="post"
+      >
+        <button type="submit">30s</button>
+      </form>
     </div>
     {% endif %}
   </body>
